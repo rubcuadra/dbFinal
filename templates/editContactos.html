@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		{{locals.form.as_p}}
+		<a href="{% url 'get_contactos' %}"><button>done</button></a> 
+	</form>
+	
+	<a href="{% url 'delete_contactos' locals.contactpK %}"><button>delete</button></a> 
+{% endblock %}

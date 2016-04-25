@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact-IT</title>
+<link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+  <body> 
+    <div class="top-bar">
+      <div class="top-bar-right">
+        <ul class="menu">
+        <li class="menu-text"></li>
+        {% if user %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% else %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %} 
+        <li><a href="{% url 'signup' %}" class="btn btn-lg btn-default">Register</a></li>
+        </ul>
+      </div>
+    </div>
+     
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Contact IT</h1>
+        <h2 class="subheader">Such a Simple Way to Keep in Touch</h2>
+      </div>
+    </div>
+     
+    <div class="row medium-8 large-7 columns">
+    <div class="blog-post">
+    <h3>"An Awesome Idea" <small>4/18/2016</small></h3>
+    <img class="thumbnail" src="https://i.ytimg.com/vi/IifvjcL9yeU/maxresdefault.jpg">
+
+    <p>We have to do everything we can to encourage the entrepreneurial spirit, wherever we find it. We should be helping American companies compete and sell their products all over the world. We should be making it easier and faster to turn new ideas into new jobs and new businesses. And we should knock down any barriers that stand in the way. Because if we’re going to create jobs now and in the future, we're going to have to out-build and out-educate and out-innovate every other country on Earth.</p>
+    <div class="callout">
+    <ul class="menu simple">
+    <li><a href="https://en.wikipedia.org/wiki/Barack_Obama">By: President Barack Obama</a></li>
+    <li>Comments: 3</li>
+    </ul>
+    </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+          $(document).foundation();
+        </script>
+  </body>
+</html>
+
+
+
+

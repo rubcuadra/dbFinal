@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container">
+		{% for grupo in grupos %}
+			<a href="{% url 'edit_grupos' grupo.pk %}"> <p>{{ grupo.name }}</p></a>
+			<p>{{ grupo.description }}</p>
+			<ul>
+			{% for person in grupo.person.all%}
+					<li>{{person}} </li>
+				{%endfor%}
+			</ul>
+		{% endfor %}
+			
+		<a href="{% url 'group-new' %}" class="btn btn-lg btn-default">Añadir grupo</a>
+	</div>
+{% endblock %}
