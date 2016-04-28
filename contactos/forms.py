@@ -16,7 +16,7 @@ class GroupForm(forms.ModelForm):
 	def save(self,user,*args,**kwargs):
 		self.instance.user = user
 		super(GroupForm, self).save(*args, **kwargs)
-	
+		#select column_name from information_schema.columns where table_name = 'contactos_person';
 	def __init__(self, *args, **kwargs):
 		#Si vamos a Crear Nuevo, Edit nos da Instance
 		user = kwargs.pop('usuario') if 'usuario' in kwargs else kwargs.pop('instance').user
