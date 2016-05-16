@@ -13,6 +13,27 @@ def validate_year(value,length =4):
         print len(str(value))
         raise ValidationError('Year is Incorrect')
 gen =(('M','Masculino'),('F','Femenino'),)
+class address(models.Model):
+    zip_code = models.CharField(max_length=5, verbose_name=u'Postal Code: ')
+    street = models.CharField (max_length=50, verbose_name=u'Address ')
+    inside = models.CharField (max_length=10, verbose_name=u'Inside Number ')
+    outside = models.CharField (max_length=10, verbose_name=u'Outside Number ')
+    city = models.CharField (max_length=30, verbose_name=u'City')
+    state = models.CharField (max_length=30, verbose_name=u'State ')
+    
+    def __unicode__(self):
+        return self.street + ' ' + self.zip_code
+class Membership(models.Model):
+    investor = models.ForeignKey(investor)
+    smes = models.ForeignKey(smes)
+    date_invested = models.DateField(auto_now=False)
+    
+class smes(models.Model):
+    RFC = models.CharField(max_length=13, choices=gen,verbose_name=u'RFC: ')
+    ciec = models.CharField(max_length=30, verbose_name=u'CIEC:')
+    
+    def __unicode__(self):
+        return self.RFC 
 
 class investor(models.Model):
     name = models.CharField(max_length=30, verbose_name=u'Name')
@@ -34,25 +55,3 @@ class investor(models.Model):
     def __unicode__(self):
         return self.name + ' ' + self.last_name
 
-class address(models.Model):
-    zip_code = models.CharField(max_length=5, verbose_name=u'Postal Code: ')
-    street = models.CharField (max_length=50, verbose_name=u'Address ')
-    inside = models.CharField (max_length=10, verbose_name=u'Inside Number ')
-    outside = models.CharField (max_length=10, verbose_name=u'Outside Number ')
-    city = models.CharField (max_length=30, verbose_name=u'City')
-    state = models.CharField (max_length=30, verbose_name=u'State ')
-    
-    def __unicode__(self):
-        return self.street + ' ' + self.zip_code
-
-class Membership(models.Model):
-    investor = models.ForeignKey(investor)
-    smes = models.ForeignKey(smes)
-    date_invested = models.DateField(auto_now=False)
-    
-class smes(models.Model):
-    RFC = models.CharField(max_length=13, choices=gen,verbose_name=u'RFC: ')
-    ciec = models.CharField(max_length=30, verbose_name=u'CIEC:')
-    
-    def __unicode__(self):
-        return self.RFC 
