@@ -67,7 +67,7 @@ WSGI_APPLICATION = 'dbFinal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'c',
+        'NAME': 'sb',
         'USER': 'rcuadra',
         'PASSWORD': 'rcuadra1',
         'HOST': 'startupbus16.cshprmqk1mb3.us-west-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
