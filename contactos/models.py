@@ -1,38 +1,58 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.db import models
+from django.core.exceptions import ValidationError
 
-class Activity(models.Model):
-    name = models.CharField(max_length=40, verbose_name=u'Actividad')
-    description = models.CharField(max_length=120, verbose_name=u'Description')
+def validate_length(value,length=24):
+    print len(str(value))
+    if len(str(value)) != length:
+        raise ValidationError('Debes elegir 3 opciones')
+def validate_year(value,length =4):
+    if len(str(value)) != length:
+        print len(str(value))
+        raise ValidationError('Year is Incorrect')
+gen =(('M','Masculino'),('F','Femenino'),)
 
-    def __unicode__(self):
-        return self.name 
+class investor(models.Model):
+    name = models.CharField(max_length=30, verbose_name=u'Name')
+    last_name = models.CharField(max_length=30, verbose_name=u'Last name')
+    gender = models.CharField(max_length=1, choices=gen,verbose_name=u'Gender: ')
+    
+    birth_date = models.DateField(auto_now=False,verbose_name=u'Birth Date')
 
-class Person(models.Model):
-    name = models.CharField(max_length=120, verbose_name=u'Nombre')
-    last_name = models.CharField(
-        max_length=120, blank=True, null=True, verbose_name=u'Apellido'
-    )
-    number = models.CharField(max_length=10, verbose_name=u'Numero')
-    phone_number = models.CharField(
-        max_length=10, verbose_name=u'Celular', blank=True
-    )
-    email = models.EmailField(blank=True, null=True)
-    direccion = models.CharField(max_length=200, blank=True, null=True)
-    user = models.ForeignKey(User)
+    number = models.CharField(max_length=10, verbose_name=u'Phone')
+    phone_number = models.CharField(max_length=10, verbose_name=u'Cellphone', blank=True)
 
-    likes = models.ManyToManyField(Activity)
+    RFC = models.CharField(max_length=13, choices=gen,verbose_name=u'RFC: ')
+    CURP = models.CharField(max_length=18,choices=gen,verbose_name=u'CURP: ')
+    direct = models.ForeignKey(address, blank=False, null=False)
+    
+    income = models.CharField(max_length=40, verbose_name=u'How do you obtain money?(own business,employee) ')
+    investment = models.ManyToManyField(smes,through='invest')
 
     def __unicode__(self):
         return self.name + ' ' + self.last_name
 
-class Group(models.Model):
-    name = models.CharField(max_length=120, verbose_name=u'Nombre')
-    description = models.CharField(max_length=300, verbose_name=u'Descripcion')
-    person = models.ManyToManyField(Person)
-    user = models.ForeignKey(User)
-    activity = models.ForeignKey(Activity, blank=False, null=False)
-
+class address(models.Model):
+    zip_code = models.CharField(max_length=5, verbose_name=u'Postal Code: ')
+    street = models.CharField (max_length=50, verbose_name=u'Address ')
+    inside = models.CharField (max_length=10, verbose_name=u'Inside Number ')
+    outside = models.CharField (max_length=10, verbose_name=u'Outside Number ')
+    city = models.CharField (max_length=30, verbose_name=u'City')
+    state = models.CharField (max_length=30, verbose_name=u'State ')
+    
     def __unicode__(self):
-        return self.name
+        return self.street + ' ' + self.zip_code
+
+class Membership(models.Model):
+    investor = models.ForeignKey(investor)
+    smes = models.ForeignKey(smes)
+    date_invested = models.DateField(auto_now=False)
+    
+class smes(models.Model):
+    RFC = models.CharField(max_length=13, choices=gen,verbose_name=u'RFC: ')
+    ciec = models.CharField(max_length=30, verbose_name=u'CIEC:')
+    
+    def __unicode__(self):
+        return self.RFC 
