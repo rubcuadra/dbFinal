@@ -3,13 +3,16 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 #from django.template.context_processors import csrf
-from .models import Person, Group
+#from .models import Person, Group
 from django.views.generic import View 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import forms as cForms
-
-
+class HomeView(View):
+    template_name = 'index.html'
+    def get(self, request):
+        return render(request,template_name,locals())
+'''
 class PersonView(View):
     template_name = 'person.html'
     def get(self, request):
@@ -48,12 +51,7 @@ class GroupView(View):
     def dispatch(self, request, *args, **kwargs):
         return super(GroupView, self).dispatch(request, *args, **kwargs)
 
-def home(request):
-    return render(
-        request,
-        'index.html',
-        {}
-    )
+
 
 def register(request):
     if request.method == 'POST':
@@ -165,5 +163,5 @@ def delete_group(request, primaryKey):
     cont.delete()
     return redirect(reverse("get_grupos")) 
 
-
+'''
 
