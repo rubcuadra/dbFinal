@@ -9,8 +9,6 @@ urlpatterns = patterns ('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.home, name='home'),
 
-    #url(r'^login/$', contacto_views.login_view, name='login'),
-    #url(r'^signup/$', contacto_views.register, name='signup'),
     #url(r'^logout/$', "django.contrib.auth.views.logout",{"next_page":"/"}, name='logout'),
 
     #url(r'^new/persons/$', contacto_views.PersonView.as_view(), name='person-new'),

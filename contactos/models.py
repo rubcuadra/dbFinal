@@ -29,6 +29,7 @@ class smes(models.Model):
     
     def __unicode__(self):
         return self.RFC 
+
 class investor(models.Model):
     name = models.CharField(max_length=30, verbose_name=u'Name')
     last_name = models.CharField(max_length=30, verbose_name=u'Last name')
@@ -44,8 +45,7 @@ class investor(models.Model):
     direct = models.ForeignKey(address, blank=False, null=False)
     
     income = models.CharField(max_length=40, verbose_name=u'How do you obtain money?(own business,employee) ')
-    investment = models.ManyToManyField(smes,through='invest')
+    investment = models.ManyToManyField(smes)
 
     def __unicode__(self):
         return self.name + ' ' + self.last_name
-
