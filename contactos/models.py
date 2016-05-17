@@ -23,13 +23,13 @@ class address(models.Model):
     
     def __unicode__(self):
         return self.street + ' ' + self.zip_code
-class smes(User):
+class smes(models.Model):
     RFC = models.CharField(max_length=13, choices=gen,verbose_name=u'RFC: ')
     ciec = models.CharField(max_length=30, verbose_name=u'CIEC:')
     
     def __unicode__(self):
         return self.RFC 
-class investor(User):
+class investor(models.Model):
     name = models.CharField(max_length=30, verbose_name=u'Name')
     last_name = models.CharField(max_length=30, verbose_name=u'Last name')
     gender = models.CharField(max_length=1, choices=gen,verbose_name=u'Gender: ')
@@ -48,11 +48,4 @@ class investor(User):
 
     def __unicode__(self):
         return self.name + ' ' + self.last_name
-
-class investment(models.Model):
-    investor = models.ForeignKey(investor)
-    smes = models.ForeignKey(smes)
-    date_invested = models.DateField(auto_now=False)
-
-
 

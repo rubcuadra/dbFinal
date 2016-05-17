@@ -70,7 +70,7 @@ DATABASES = {
         'NAME': 'sb',
         'USER': 'rcuadra',
         'PASSWORD': 'rcuadra1',
-        'HOST': 'startupbus16.cshprmqk1mb3.us-west-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
+        'HOST': '52.39.205.91',   # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     }
 }

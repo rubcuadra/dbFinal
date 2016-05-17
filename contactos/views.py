@@ -8,10 +8,12 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import forms as cForms
-class HomeView(View):
-    template_name = 'index.html'
-    def get(self, request):
-        return render(request,template_name,locals())
+def home(request):
+    return render(
+        request,
+        'index.html',
+        {}
+    )
 '''
 class PersonView(View):
     template_name = 'person.html'

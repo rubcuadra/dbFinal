@@ -1,5 +1,5 @@
 from django import forms
-from .models import Person ,Group
+'''from .models import Person ,Group
 
 class PersonForm(forms.ModelForm):
 
@@ -28,3 +28,4 @@ class GroupForm(forms.ModelForm):
 		model = Group
 		exclude = ('user', )
 		widgets = {'person': forms.CheckboxSelectMultiple}
+'''
