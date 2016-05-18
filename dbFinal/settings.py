@@ -64,17 +64,6 @@ WSGI_APPLICATION = 'dbFinal.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'sb',
-        'USER': 'rcuadra',
-        'PASSWORD': 'rcuadra1',
-        'HOST': '52.39.205.91',   # Or an IP Address that your DB is hosted on
-        'PORT': '5432',
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
